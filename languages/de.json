@@ -1,0 +1,23 @@
+{
+	"LIGHTSOUTSD.ac": "AC",
+	"LIGHTSOUTSD.luck": "Luck",
+	"LIGHTSOUTSD.open_sheet": "Open sheet",
+	"LIGHTSOUTSD.sidebar_tooltip": "Show/hide Sidebar",
+	"LIGHTSOUTSD.config_party_only_active": "Display Active Characters Only",
+	"LIGHTSOUTSD.config_party_only_active_help": "Only display characters of online players in the left panel. This may be useful if all players are not present in a game or you are running an open game.",
+	"LIGHTSOUTSD.config_hide_pc_title": "Hide PC Title and Class",
+	"LIGHTSOUTSD.config_hide_pc_title_help": "Hide PC's title and class below the character panel.",
+	"LIGHTSOUTSD.config_disable_gm_selected_token": "Hide GM's Selected Token",
+	"LIGHTSOUTSD.config_disable_gm_selected_token_help": "Disable showing GM's selected token information in the character panel.",
+	"LIGHTSOUTSD.config_hotbar_visibility": "Hotbar Visibility",
+	"LIGHTSOUTSD.config_hotbar_visibility_help": "Controls who can see the Hotbar.",
+	"LIGHTSOUTSD.config_player_list_visibility": "Players List Visibility",
+	"LIGHTSOUTSD.config_player_list_visibility_help": "Controls who can see the the Player List.",
+	"LIGHTSOUTSD.config_navbar_visibility": "Scene Navigation Visibility",
+	"LIGHTSOUTSD.config_navbar_visibility_help": "Controls who can see the the Scene Navigation.",
+	"LIGHTSOUTSD.config_visibility_option_0": "None",
+	"LIGHTSOUTSD.config_visibility_option_1": "GM Only",
+	"LIGHTSOUTSD.config_visibility_option_2": "Players and GM",
+	"LIGHTSOUTSD.config_icon_high_contrast_mode": "High Contrast Mode for Icons",
+	"LIGHTSOUTSD.config_icon_high_contrast_mode_help": "[EXPERIMENTAL] This setting enables a grayscale high contrast filter for all icons. It can be used to achieve more Shadowdark-style iconography while still using colored icons."
+}
