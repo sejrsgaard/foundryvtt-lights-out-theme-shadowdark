@@ -825,6 +825,11 @@ section.effect-panel {
   box-shadow: 0px 1px 0 1px rgba(255, 255, 255, 0.4) inset;
 }
 
+#party .character-health .bar.unknown {
+  background: linear-gradient(180deg, #323232, #292929);
+  width: 100%;
+}
+
 #player-character .character-health .bar.healthy,
 #party .character-health .bar.healthy {
   background: linear-gradient(180deg, #de2f2d, #a41413ff);

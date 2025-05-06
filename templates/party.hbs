@@ -13,12 +13,15 @@
                 </div>
                 <div class="character-health">
                     <div class="bar-wrapper">
+                        {{#if (or (not ../hidePartyHealth) (eq c.id ../userCharacterId))}}
                         <div class="bar {{hp.status}}" style="width: {{hp.percent}}%"></div>
-
-                        <input type="text" class="current-health" data-value="{{hp.value}}" data-id="{{id}}"
+                        <input type="text" class="current-health" data-value="{{hp.value}}" data-id="{{c.id}}"
                             value="{{hp.value}}" />
                         <span class="divider">/</span>
                         <input type="text" value="{{hp.max}}" disabled />
+                        {{else}}
+                        <div class="bar unknown"></div>
+                        {{/if}}
                     </div>
                 </div>
             </div>

@@ -160,8 +160,13 @@ async function renderCharacter(selection = false) {
 }
 
 async function renderParty() {
+  const partyVisibility = game.settings.get("lights-out-theme-shadowdark", "party_panel_visibility");
+  if (partyVisibility < userPermission()) {
+    game.lightsOutTheme.partyPanel.close();
+    return;
+  }
+  
   const characters = await Promise.all(getPartyCharacters().map(characterData));
-
   game.lightsOutTheme.partyPanel.updateData(characters);
 }
 
