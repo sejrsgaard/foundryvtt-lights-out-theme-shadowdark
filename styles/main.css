@@ -4,6 +4,8 @@
 @import url("party-panel.css");
 @import url("character-panel.css");
 
+@import url("foundry.css");
+
 body {
   --font-body: "Montserrat-Medium", sans-serif;
 }

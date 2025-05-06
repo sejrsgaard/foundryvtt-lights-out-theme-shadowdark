@@ -1,0 +1,123 @@
+/**
+ * Chat
+ */
+
+#chat-form {
+  height: 50px;
+  flex: 0 0 50px;
+}
+
+#chat-form textarea {
+  border: 1px solid var(--lights-out-color-foreground-secondary);
+  background: rgba(255, 255, 255, 0.2);
+  height: 50px;
+  color: white;
+}
+
+.chat-log {
+  font-family: var(--font-body);
+}
+
+.chat-message.whisper {
+  background: black !important;
+}
+
+.chat-message.whisper .dice-roll .dice-result {
+  background-color: #0f0f0f;
+}
+
+.chat-message.whisper .message-sender {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-image: url("../images/backgrounds/icons/eye-slash-solid.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    opacity: 0.4;
+  }
+}
+
+.chat-message,
+.chat-message.whisper,
+.chat-message.emote {
+  background: var(--lights-out-color-chat-message-background);
+  color: var(--lights-out-color-chat-message-text);
+  border-radius: 2px;
+  border: 1px solid var(--lights-out-color-chat-message-border);
+  margin: 8px 3px;
+}
+
+.card-header h3,
+.shadowdark h3 {
+  color: var(--lights-out-color-chat-message-text);
+}
+
+.card-footer {
+  display: none;
+}
+
+.chat-message .message-header {
+  color: var(--lights-out-color-chat-message-text);
+}
+
+.shadowdark.item-card .card-header,
+.shadowdark.item-card .card-attack-roll,
+.shadowdark.item-card .card-footer,
+.shadowdark.roll-card .card-header,
+.shadowdark.light-source-card .card-header {
+  border: none;
+}
+
+.dice-roll .dice-total {
+  font-family: var(--font-header);
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.dice-roll .dice-total.success,
+.dice-roll .dice-total.failure {
+  font-family: var(--font-header);
+}
+
+.dice-roll .dice-result {
+  background-color: var(--lights-out-color-chat-message-background-secondary);
+  padding: 2px 8px;
+}
+
+.dice-roll .dice-formula,
+.dice-roll .dice-total {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.chat-portrait-text-size-name-generic {
+  font-family: "Old Newspaper Font";
+}
+
+.message-sender {
+  font-family: "Old Newspaper Font";
+  font-size: 16px;
+}
+
+a.content-link,
+a.inline-roll {
+  background: none;
+}
+
+.chat-portrait-image-size-name-generic {
+  display: none;
+}
+
+.shadowdark.item-card .card-header img,
+.shadowdark.roll-card .card-header img,
+.shadowdark.light-source-card .card-header img {
+  border: 1px solid var(--lights-out-color-foreground-secondary);
+  border-radius: 50%;
+}

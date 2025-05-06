@@ -37,6 +37,14 @@
   --lights-out-color-background-primary: rgba(0, 0, 0, 1);
   --lights-out-color-background-secondary: rgba(0, 0, 0, 0.5);
   --lights-out-color-foreground-primary: white;
+  --lights-out-color-foreground-secondary: #a8a8a8;
+
+  --lights-out-color-text-primary: #dddddd;
+
+  --lights-out-color-chat-message-background: #111111;
+  --lights-out-color-chat-message-background-secondary: #1a1a1a;
+  --lights-out-color-chat-message-text: var(--lights-out-color-text-primary);
+  --lights-out-color-chat-message-border: rgba(255, 255, 255, 0.1);
 
   --lights-out-color-bar-unknown: linear-gradient(180deg, #323232, #292929);
   --lights-out-color-bar-healthy: linear-gradient(180deg, #ba2524, #861211);
@@ -56,6 +64,14 @@
   --lights-out-color-background-primary: rgba(0, 0, 0, 1);
   --lights-out-color-background-secondary: rgba(0, 0, 0, 0.5);
   --lights-out-color-foreground-primary: white;
+  --lights-out-color-foreground-secondary: #a8a8a8;
+
+  --lights-out-color-text-primary: #dddddd;
+
+  --lights-out-color-chat-message-background: #111111;
+  --lights-out-color-chat-message-background-secondary: #1a1a1a;
+  --lights-out-color-chat-message-text: var(--lights-out-color-text-primary);
+  --lights-out-color-chat-message-border: rgba(255, 255, 255, 0.1);
 
   --lights-out-color-bar-unknown: linear-gradient(180deg, #323232, #292929);
   --lights-out-color-bar-healthy: linear-gradient(180deg, #ba2524, #861211);
