@@ -15,7 +15,7 @@
         "scripts/main.js"
     ],
     "styles": [
-        "styles/ui.css"
+        "styles/main.css"
     ],
     "languages": [
         {
@@ -67,7 +67,7 @@
     "compatibility": {
         "minimum": "9",
         "verified": "12.331",
-        "maximum": "12"
+        "maximum": "13"
     },
     "relationships": {
         "systems": [
