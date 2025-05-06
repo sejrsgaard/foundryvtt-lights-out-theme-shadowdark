@@ -48,10 +48,10 @@ export class PartyPanelApp extends HandlebarsApplicationMixin(ApplicationV2) {
     _insertElement(element) {
         const existing = document.getElementById(element.id);
         
-        const container = document.querySelector("#ui-middle");
+        const container = document.querySelector("#ui-left");
         
         if (!container) {
-            console.warn("Target container #ui-middle not found");
+            console.warn("Target container #ui-left not found");
             return;
         }
         
