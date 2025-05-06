@@ -10,14 +10,18 @@
 	"LIGHTSOUTSD.config_disable_gm_selected_token": "Hide GM's Selected Token",
 	"LIGHTSOUTSD.config_disable_gm_selected_token_help": "Disable showing GM's selected token information in the character panel.",
 	"LIGHTSOUTSD.config_hotbar_visibility": "Hotbar Visibility",
-	"LIGHTSOUTSD.config_hotbar_visibility_help": "Controls who can see the Hotbar.",
+	"LIGHTSOUTSD.config_hotbar_visibility_help": "Controls who can see the Foundry Hotbar.",
 	"LIGHTSOUTSD.config_player_list_visibility": "Players List Visibility",
-	"LIGHTSOUTSD.config_player_list_visibility_help": "Controls who can see the the Player List.",
+	"LIGHTSOUTSD.config_player_list_visibility_help": "Controls who can see the the Foundry Player List.",
 	"LIGHTSOUTSD.config_navbar_visibility": "Scene Navigation Visibility",
-	"LIGHTSOUTSD.config_navbar_visibility_help": "Controls who can see the the Scene Navigation.",
+	"LIGHTSOUTSD.config_navbar_visibility_help": "Controls who can see the the Foundry Scene Navigation.",
 	"LIGHTSOUTSD.config_visibility_option_0": "None",
 	"LIGHTSOUTSD.config_visibility_option_1": "GM Only",
 	"LIGHTSOUTSD.config_visibility_option_2": "Players and GM",
 	"LIGHTSOUTSD.config_icon_high_contrast_mode": "High Contrast Mode for Icons",
-	"LIGHTSOUTSD.config_icon_high_contrast_mode_help": "[EXPERIMENTAL] This setting enables a grayscale high contrast filter for all icons. It can be used to achieve more Shadowdark-style iconography while still using colored icons."
+	"LIGHTSOUTSD.config_icon_high_contrast_mode_help": "[EXPERIMENTAL] This setting enables a grayscale high contrast filter for all icons. It can be used to achieve more Shadowdark-style iconography while still using colored icons.",
+	"LIGHTSOUTSD.config_party_panel_visibility": "Party Panel Visibility",
+	"LIGHTSOUTSD.config_party_panel_visibility_help": "Controls who can see the Lights Out Party Panel.",
+	"LIGHTSOUTSD.config_hide_party_health": "Hide Party Health",
+	"LIGHTSOUTSD.config_hide_party_health_help": "Disable showing party members' health in the Lights Out Party Panel. Players can still see their own health."
 }
