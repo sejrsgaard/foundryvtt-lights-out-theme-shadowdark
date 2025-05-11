@@ -1,123 +1,242 @@
+@layer lights-out.chat, lights-out-sidebar, lights-out-components, lights-out-applications;
+
 /**
  * Chat
  */
+@layer lights-out.chat {
+  #chat-message {
+    background: var(--lights-out-color-chat-message-background);
+    border: 1px solid var(--lights-out-color-foreground-secondary);
+  }
 
-#chat-form {
-  height: 50px;
-  flex: 0 0 50px;
-}
+  #chat-message:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--lights-out-color-foreground-primary);
+  }
 
-#chat-form textarea {
-  border: 1px solid var(--lights-out-color-foreground-secondary);
-  background: rgba(255, 255, 255, 0.2);
-  height: 50px;
-  color: white;
-}
+  .chat-log {
+    font-family: var(--font-body);
+  }
 
-.chat-log {
-  font-family: var(--font-body);
-}
+  .chat-message.whisper {
+    background: black !important;
+  }
 
-.chat-message.whisper {
-  background: black !important;
-}
+  .chat-message.whisper .dice-roll .dice-result {
+    background-color: #0f0f0f;
+  }
 
-.chat-message.whisper .dice-roll .dice-result {
-  background-color: #0f0f0f;
-}
+  .chat-message.whisper .message-sender {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
-.chat-message.whisper .message-sender {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+    &::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/backgrounds/icons/eye-slash-solid.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      filter: invert(1);
+      opacity: 0.4;
+    }
+  }
 
-  &::after {
-    content: "";
-    width: 16px;
-    height: 16px;
-    background-image: url("../images/backgrounds/icons/eye-slash-solid.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: invert(1);
-    opacity: 0.4;
+  .chat-message,
+  .chat-message.whisper,
+  .chat-message.emote {
+    background: var(--lights-out-color-chat-message-background);
+    color: var(--lights-out-color-chat-message-text);
+    border-radius: 2px;
+    border: 1px solid var(--lights-out-color-chat-message-border);
+    margin: 8px 3px;
+  }
+
+  .card-header h3,
+  .shadowdark h3 {
+    color: var(--lights-out-color-chat-message-text);
+  }
+
+  .card-footer {
+    display: none;
+  }
+
+  .chat-message .message-header {
+    color: var(--lights-out-color-chat-message-text);
+  }
+
+  .shadowdark.item-card .card-header,
+  .shadowdark.item-card .card-attack-roll,
+  .shadowdark.item-card .card-footer,
+  .shadowdark.roll-card .card-header,
+  .shadowdark.light-source-card .card-header {
+    border: none;
+  }
+
+  .dice-roll .dice-total {
+    font-family: var(--font-header);
+    font-size: 28px;
+    line-height: 120%;
+  }
+
+  .dice-roll .dice-total.success,
+  .dice-roll .dice-total.failure {
+    font-family: var(--font-header);
+  }
+
+  .dice-roll .dice-total.success {
+    color: var(--lights-out-color-roll-success);
+  }
+
+  .dice-roll .dice-total.failure {
+    color: var(--lights-out-color-roll-fail);
+  }
+
+  .dice-roll .dice-result {
+    background-color: var(--lights-out-color-chat-message-background-secondary);
+    padding: 2px 8px;
+  }
+
+  .dice-roll .dice-formula,
+  .dice-roll .dice-total {
+    border: none;
+    box-shadow: none;
+    background: none;
+  }
+
+  .chat-portrait-text-size-name-generic {
+    font-family: "Old Newspaper Font";
+  }
+
+  .message-sender {
+    font-family: "Old Newspaper Font";
+    font-size: 16px;
+  }
+
+  a.content-link,
+  a.inline-roll {
+    background: none;
+  }
+
+  .chat-portrait-image-size-name-generic {
+    display: none;
+  }
+
+  .shadowdark.item-card .card-header img,
+  .shadowdark.roll-card .card-header img,
+  .shadowdark.light-source-card .card-header img {
+    border: 1px solid var(--lights-out-color-foreground-secondary);
+    border-radius: 50%;
   }
 }
 
-.chat-message,
-.chat-message.whisper,
-.chat-message.emote {
-  background: var(--lights-out-color-chat-message-background);
-  color: var(--lights-out-color-chat-message-text);
-  border-radius: 2px;
-  border: 1px solid var(--lights-out-color-chat-message-border);
-  margin: 8px 3px;
+/**
+ * Sidebar
+ */
+@layer lights-out.sidebar {
+  .sidebar-tab:not(#chat) {
+    background: url(../images/backgrounds/chat.webp);
+    background-size: 100% 100%;
+    padding: 24px 16px;
+  }
+
+  #sidebar-content {
+    padding-bottom: 8px;
+  }
+
+  .directory-footer .flexrow {
+    gap: 8px;
+    font-size: var(--font-size-13);
+  }
+
+  .character-generator-button,
+  .shadowdarkling-import-button {
+    font-size: var(--font-size-13);
+    font-weight: 400;
+  }
+
+  #settings {
+    --font-h1: "JSL Blackletter", sans-serif;
+    --font-h4: "JSL Blackletter", sans-serif;
+  }
 }
 
-.card-header h3,
-.shadowdark h3 {
-  color: var(--lights-out-color-chat-message-text);
+@layer lights-out.components {
+  /**
+  * Button
+  */
+  .action-buttons button,
+  button.combat-control-lg,
+  .settings button,
+  .documentation button,
+  .documentation a,
+  .access button {
+    font-family: "Old Newspaper Font";
+    color: var(--lights-out-color-text-primary);
+    border: 1px solid var(--lights-out-color-foreground-secondary);
+    border-radius: var(--lights-out-border-radius-small);
+    transition: background-color 0.3s ease, text-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .action-buttons button:hover,
+  button.combat-control-lg:hover,
+  .settings button:hover,
+  .documentation button:hover,
+  .documentation a:hover,
+  .access button:hover {
+    background-color: var(--lights-out-color-foreground);
+    box-shadow: inset 0 0 4px var(--lights-out-color-foreground-primary);
+    text-shadow: 0 0 6px var(--lights-out-color-foreground-primary);
+  }
+
+  button.ui-control,
+  a.ui-control {
+    border-radius: var(--lights-out-border-radius-large);
+  }
+
+  .split-button button {
+    border-radius: var(--lights-out-border-radius-small);
+  }
+
+  .split-button .ui-control:first-child {
+    border-start-start-radius: var(--lights-out-border-radius-large);
+    border-end-start-radius: var(--lights-out-border-radius-large);
+  }
+
+  .split-button .ui-control:last-child {
+    border-start-end-radius: var(--lights-out-border-radius-large);
+    border-end-end-radius: var(--lights-out-border-radius-large);
+  }
+
+  .scene-navigation-menu li.ui-control {
+    border-radius: var(--lights-out-border-radius-small);
+  }
+
+  #hotbar #action-bar {
+    gap: 4px;
+  }
+
+  #hotbar #action-bar .slot {
+    border-radius: var(--lights-out-border-radius-small);
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="search"],
+  input[type="file"],
+  select {
+    border-radius: var(--lights-out-border-radius-small);
+  }
 }
 
-.card-footer {
-  display: none;
-}
-
-.chat-message .message-header {
-  color: var(--lights-out-color-chat-message-text);
-}
-
-.shadowdark.item-card .card-header,
-.shadowdark.item-card .card-attack-roll,
-.shadowdark.item-card .card-footer,
-.shadowdark.roll-card .card-header,
-.shadowdark.light-source-card .card-header {
-  border: none;
-}
-
-.dice-roll .dice-total {
-  font-family: var(--font-header);
-  font-size: 28px;
-  line-height: 120%;
-}
-
-.dice-roll .dice-total.success,
-.dice-roll .dice-total.failure {
-  font-family: var(--font-header);
-}
-
-.dice-roll .dice-result {
-  background-color: var(--lights-out-color-chat-message-background-secondary);
-  padding: 2px 8px;
-}
-
-.dice-roll .dice-formula,
-.dice-roll .dice-total {
-  border: none;
-  box-shadow: none;
-  background: none;
-}
-
-.chat-portrait-text-size-name-generic {
-  font-family: "Old Newspaper Font";
-}
-
-.message-sender {
-  font-family: "Old Newspaper Font";
-  font-size: 16px;
-}
-
-a.content-link,
-a.inline-roll {
-  background: none;
-}
-
-.chat-portrait-image-size-name-generic {
-  display: none;
-}
-
-.shadowdark.item-card .card-header img,
-.shadowdark.roll-card .card-header img,
-.shadowdark.light-source-card .card-header img {
-  border: 1px solid var(--lights-out-color-foreground-secondary);
-  border-radius: 50%;
+@layer lights-out.applications {
+  .sheet .standard-form header.img-name input {
+    font-size: var(--font-size-24);
+  }
 }
