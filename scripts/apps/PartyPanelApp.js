@@ -36,11 +36,11 @@ export class PartyPanelApp extends HandlebarsApplicationMixin(ApplicationV2) {
     _prepareContext(options) {
         const hidePartyHealth = game.settings.get("lights-out-theme-shadowdark", "hide_party_health");
         const isGM = game.user.isGM;
-        const userCharacterId = game.user.character?.id;
+        const userCharacterUuid = game.user.character?.uuid;
 
         return {
             hidePartyHealth: isGM ? false : hidePartyHealth, // GMs always sees health
-            userCharacterId: userCharacterId,
+            userCharacterUuid: userCharacterUuid,
             characters: this.partyData
         };
     }

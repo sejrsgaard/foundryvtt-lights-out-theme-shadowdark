@@ -109,7 +109,7 @@ Hooks.on("rtcSettingsChanged", async (settings, changes) => {
 });
 
 Hooks.on("updateActor", async function (actor) {
-  if (game.user.isGM || actor.id === getCharacter()?.id) {
+  if (game.user.isGM || actor.uuid === getCharacter()?.uuid) {
     await renderCharacter();
   }
   

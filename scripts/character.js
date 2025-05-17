@@ -62,7 +62,7 @@ export async function characterData(c) {
   }
   
   return {
-    id: c.id,
+    uuid: c.uuid,
     isPlayer: c.type == "Player",
     isToken: false,
     name: c.name,
@@ -82,48 +82,28 @@ export async function characterData(c) {
   };
 }
 
-export async function tokenData(t) {
-  const actor = game.actors.get(t.actorId);
+export async function tokenData(token) {
+  const actor = token?.actor;
   if (!actor) return;
-  
-  const actorSystem = actor.system;
-  const tokenSystem = t.delta.system;
 
-  const actorData = {
-    name: actor.name,
-    id: actor.id,
-    level: actorSystem.level.value,
-    armor: actorSystem.attributes.ac.value,
-    picture: actor.img,
-  }
-
-  const tokenData = {
-    name: t.delta.name,
-    id: t.delta.id,
-    level: tokenSystem.level?.value,
-    armor: tokenSystem.attributes?.ac?.value,
-    picture: t.delta.img,
-  }
-
-  const hp = tokenSystem.attributes?.hp.value ?? actorSystem.attributes?.hp.value;
-  const hpMax = tokenSystem.attributes?.hp.max ?? actorSystem.attributes?.hp.max;
+  const hp = actor.system.attributes?.hp.value;
+  const hpMax = actor.system.attributes?.hp.max;
   const hpPercent = calculateHpPercent(hp, hpMax);
+  const status = hpStatus(hpPercent);
 
-  // Combine actor and token data. This way we can
-  // show what is actually set in the sheet.
   return {
-    id: tokenData.id ?? actorData.id,
+    uuid: actor.uuid,
     isPlayer: false,
     isToken: true,
-    name: tokenData.name ?? actorData.name,
-    level: tokenData.level ?? actorData.level,
-    armor: tokenData.armor ?? actorData.armor,
-    picture: tokenData.picture ?? actorData.picture,
+    name: actor.name,
+    level: actor.system.level.value,
+    armor: actor.system.attributes.ac.value,
+    picture: token.img ?? actor.img,
     hp: {
       value: hp,
       max: hpMax,
       percent: hpPercent,
-      status: hpStatus(hpPercent),
+      status: status,
     },
   };
 }

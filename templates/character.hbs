@@ -3,7 +3,7 @@
         <form class="character-attrs">
             <div class="bar-wrapper">
                 {{#if isPlayer}}
-                <div class="attr" id="luck-attr" data-id="{{id}}">
+                <div class="attr" id="luck-attr" data-uuid="{{uuid}}">
                     <label>{{localize "LIGHTSOUTSD.luck"}}</label>
                     <span>{{luck}}</span>
                 </div>
@@ -19,7 +19,7 @@
         <div class="character-picture">
             <img class="character-img" src="{{picture}}" alt="{{name}}" />
 
-            <div class="sheet" data-id="{{id}}" data-token={{isToken}}>
+            <div class="sheet" data-uuid="{{uuid}}" data-token={{isToken}}>
                 {{localize "LIGHTSOUTSD.open_sheet"}}
             </div>
 
@@ -33,7 +33,7 @@
             <div class="bar-wrapper">
                 <div class="bar {{hp.status}}" style="width: {{hp.percent}}%"></div>
 
-                <input type="text" id="current-health" data-value="{{hp.value}}" data-id="{{id}}" data-token={{isToken}}
+                <input type="text" id="current-health" data-value="{{hp.value}}" data-uuid="{{uuid}}" data-token={{isToken}}
                     value="{{hp.value}}" />
                 <span class="divider">/</span>
                 <input type="text" value="{{hp.max}}" disabled />
