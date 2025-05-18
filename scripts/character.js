@@ -40,70 +40,59 @@ export function getPartyCharacters() {
   return characters;
 }
 
-export async function characterData(c) {
-  const { attributes, level, luck, alignment } = c.system;
+export async function getEntityData(entity) {
+  if (!entity) return;
 
   const pulpMode = game.settings.get("shadowdark", "usePulpMode");
 
-  const classData = await fromUuid(c.system.class);
-  const ancestryData = await fromUuid(c.system.ancestry);
+  let actor = entity;
+  if (!entity.prototypeToken) {
+    actor = entity.actor;
+  }
+
+  const classData = await fromUuid(actor.system.class);
+  const ancestryData = await fromUuid(actor.system.ancestry);
+
+  const hp = await actor.system.attributes?.hp.value;
+  const hpMax = await actor.system.attributes?.hp.max;
+  const hpPercent = calculateHpPercent(hp, hpMax);
+
+  const level = await actor.system.level.value;
+  const ac = await actor.system.attributes?.ac.value;
 
   const titleData = classData?.system.titles;
-  const title = getTitle(level.value, alignment, titleData);
-
-  let hpPercent = calculateHpPercent(attributes.hp.value, attributes.hp.max);
-
-  let luckValue;
-  if (pulpMode) {
-    luckValue = luck?.remaining;
+  let title = null;
+  if (titleData) {
+    title = getTitle(actor.system.level.value, actor.system.alignment, titleData);
   }
-  else {
-    luckValue = luck?.available ? "●" : "○"
+
+  let luckValue = null;
+  if (actor.system.luck) {
+    if (pulpMode) {
+      luckValue = actor.system.luck?.remaining;
+    }
+    else {
+      luckValue = actor.system.luck?.available ? "●" : "○";
+    }
   }
-  
-  return {
-    uuid: c.uuid,
-    isPlayer: c.type == "Player",
-    isToken: false,
-    name: c.name,
-    level: level.value,
-    ancestry: ancestryData?.name,
-    class: classData?.name,
-    title: title,
-    armor: attributes.ac.value,
-    luck: luckValue,
-    picture: c.img,
-    hp: {
-      value: attributes.hp.value,
-      max: attributes.hp.max,
-      percent: hpPercent,
-      status: hpStatus(hpPercent),
-    },
-  };
-}
-
-export async function tokenData(token) {
-  const actor = token?.actor;
-  if (!actor) return;
-
-  const hp = actor.system.attributes?.hp.value;
-  const hpMax = actor.system.attributes?.hp.max;
-  const hpPercent = calculateHpPercent(hp, hpMax);
-  const status = hpStatus(hpPercent);
 
   return {
     uuid: actor.uuid,
-    isPlayer: false,
-    isToken: true,
+    isPlayer: actor.type == "Player",
+    isToken: !entity.prototypeToken,
     name: actor.name,
-    level: actor.system.level.value,
-    armor: actor.system.attributes.ac.value,
-    picture: token.img ?? actor.img,
+    level: level,
+    ancestry: ancestryData?.name,
+    class: classData?.name,
+    title: title,
+    armor: ac,
+    luck: luckValue,
+    picture: actor.img,
     hp: {
       value: hp,
       max: hpMax,
       percent: hpPercent,
-      status: status,
+      status: hpStatus(hpPercent),
     },
   };
 }

@@ -1,8 +1,7 @@
 import {
   getCharacter,
   getPartyCharacters,
-  characterData,
-  tokenData
+  getEntityData
 } from "./character.js";
 import * as actions from "./actions.js";
 import { setupHealthPointsTracker } from "./helpers.js";
@@ -138,14 +137,7 @@ async function renderCharacter(selection = false) {
     return;
   }
 
-  let data;
-  if (character.prototypeToken) {
-    data = await characterData(character);
-  }
-  else {
-    data = await tokenData(character);
-  }
-
+  let data = await getEntityData(character);
   if (!data) return;
 
   const settings = {
@@ -166,7 +158,7 @@ async function renderParty() {
     return;
   }
   
-  const characters = await Promise.all(getPartyCharacters().map(characterData));
+  const characters = await Promise.all(getPartyCharacters().map(getEntityData));
   game.lightsOutTheme.partyPanel.updateData(characters);
 }
 
