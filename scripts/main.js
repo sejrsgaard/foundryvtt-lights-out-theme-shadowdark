@@ -11,12 +11,6 @@ import { PartyPanelApp } from "./apps/PartyPanelApp.js";
 
 Hooks.once("init", async () => {
     registerSettings();
-    $("section#ui-left").append('<div id="party"></div>');
-  
-    await loadTemplates([
-      "modules/lights-out-theme-shadowdark/templates/character.hbs",
-      "modules/lights-out-theme-shadowdark/templates/party.hbs",
-    ]);
 });
 
 Hooks.once("ready", async () => {
@@ -33,11 +27,9 @@ Hooks.once("ready", async () => {
     game.lightsOutTheme.partyPanel = new PartyPanelApp();
     game.lightsOutTheme.partyPanel.render(true);
 
-    //initial render of ui components
+    // Initial data for UI components
     await renderCharacter();
     await renderParty();
-
-    //activatePartyListeners();
 
     console.log("Lights Out Theme | Ready");
 });
