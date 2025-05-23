@@ -22,6 +22,6 @@
 	"LIGHTSOUTSD.config_icon_high_contrast_mode_help": "[EXPÉRIMENTAL] Ce paramètre active un filtre de contraste élevé en niveaux de gris pour toutes les icônes. Il peut être utilisé pour obtenir une iconographie plus proche du style Shadowdark tout en utilisant des icônes colorées.",
 	"LIGHTSOUTSD.config_party_panel_visibility": "Visibilité du panneau de groupe",
 	"LIGHTSOUTSD.config_party_panel_visibility_help": "Détermine qui peut voir le panneau de l'UI Lights Out Party.",
-	"LIGHTSOUTSD.config_hide_party_health": "Cacher la santé du groupe.",
+	"LIGHTSOUTSD.config_hide_party_health": "Cacher la santé du groupe",
 	"LIGHTSOUTSD.config_hide_party_health_help": "Désactive l'affichage de la santé des membres du groupe dans le panneau d'affichage de l'UI Lights Out Party. Les joueurs peuvent toujours voir leur propre santé."
 }
