@@ -233,6 +233,10 @@
   select {
     border-radius: var(--lights-out-border-radius-small);
   }
+
+  #players #players-active {
+    border-radius: var(--lights-out-border-radius-small);
+  }
 }
 
 @layer lights-out.applications {

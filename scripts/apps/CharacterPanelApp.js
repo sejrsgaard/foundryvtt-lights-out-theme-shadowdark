@@ -84,12 +84,12 @@ export class CharacterPanelApp extends HandlebarsApplicationMixin(ApplicationV2)
         if (existing) {
             if (existing.parentElement !== container) {
                 existing.remove();
-                container.appendChild(element);
+                container.prepend(element);
             } else {
                 existing.replaceWith(element);
             }
         } else {
-            container.appendChild(element);
+            container.prepend(element);
         }
     }
 
