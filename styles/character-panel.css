@@ -8,7 +8,7 @@
   font-family: var(--font-body);
   font-weight: medium;
   color: var(--lights-out-color-foreground-primary);
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   pointer-events: all;
 }
 

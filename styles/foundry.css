@@ -210,10 +210,23 @@
     border-end-end-radius: var(--lights-out-border-radius-large);
   }
 
+  /**
+  * Scene Navigation
+  */
   .scene-navigation-menu li.ui-control {
     border-radius: var(--lights-out-border-radius-small);
+    padding-top: 0.4rem;
   }
 
+  .scene-navigation-menu li.ui-control.active {
+    background: var(--lights-out-color-background-primary);
+    border: 1px solid var(--lights-out-color-foreground-secondary);
+    box-shadow: 0 0 5px var(--lights-out-color-foreground-primary);
+  }
+
+  /**
+  * Hotbar
+  */
   #hotbar #action-bar {
     gap: 4px;
   }
@@ -222,6 +235,15 @@
     border-radius: var(--lights-out-border-radius-small);
   }
 
+  #hotbar #action-bar .slot:hover {
+    background: var(--lights-out-color-background-primary);
+    border: 2px solid var(--lights-out-color-foreground-secondary);
+    border-radius: var(--lights-out-border-radius-small);
+  }
+
+  /**
+  * Inputs
+  */
   input[type="text"],
   input[type="number"],
   input[type="password"],
@@ -234,6 +256,9 @@
     border-radius: var(--lights-out-border-radius-small);
   }
 
+  /**
+  * Player list
+  */
   #players #players-active {
     border-radius: var(--lights-out-border-radius-small);
   }
