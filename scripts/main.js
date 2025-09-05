@@ -52,24 +52,20 @@ Hooks.on("renderSettings", function (app, html) {
 // Hide UI elements if current player permissions are below the global setting
 Hooks.on("renderHotbar", async (app, html) => {
     const hotBarSetting = game.settings.get("lights-out-theme-shadowdark", "hotbar_visibility");
-    (hotBarSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
+    const hide = hotBarSetting < userPermission();
+    app.element.classList.toggle("hidden", hide);
 });
 
 Hooks.on("renderPlayerList", async (app, html) => {
     let playerListSetting = game.settings.get("lights-out-theme-shadowdark", "players_list_visibility");
-    (playerListSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
+    const hide = playerListSetting < userPermission();
+    app.element.classList.toggle("hidden", hide);
 });
 
 Hooks.on("renderSceneNavigation", async (app, html) => {
     let navBarSetting = game.settings.get("lights-out-theme-shadowdark", "navbar_visibility");
-    (navBarSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
-
-    // Adjust #navigation top position based on hotbar visibility
-    const hotBarSetting = game.settings.get("lights-out-theme-shadowdark", "hotbar_visibility");
-    const navigationElement = document.getElementById("navigation");
-    if (navigationElement) {
-        navigationElement.classList.toggle("with-hotbar", hotBarSetting);
-    }
+    const hide = navBarSetting < userPermission();
+    app.element.classList.toggle("hidden", hide);
 });
 
 Hooks.on("renderSceneControls", (controls, html) => {
