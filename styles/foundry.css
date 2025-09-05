@@ -117,6 +117,7 @@
   a.content-link,
   a.inline-roll {
     background: none;
+    color: var(--lights-out-color-link);
   }
 
   .chat-portrait-image-size-name-generic {
