@@ -40,85 +40,54 @@ export function getPartyCharacters() {
   return characters;
 }
 
-export async function characterData(c) {
-  const { attributes, level, luck, alignment } = c.system;
+export async function getEntityData(entity) {
+  if (!entity) return;
 
   const pulpMode = game.settings.get("shadowdark", "usePulpMode");
 
-  const classData = await fromUuid(c.system.class);
-  const ancestryData = await fromUuid(c.system.ancestry);
+  let actor = entity;
+  if (!entity.prototypeToken) {
+    actor = entity.actor;
+  }
+
+  const classData = await fromUuid(actor.system.class);
+  const ancestryData = await fromUuid(actor.system.ancestry);
+
+  const hp = await actor.system.attributes?.hp.value;
+  const hpMax = await actor.system.attributes?.hp.max;
+  const hpPercent = calculateHpPercent(hp, hpMax);
+
+  const level = await actor.system.level.value;
+  const ac = await actor.system.attributes?.ac.value;
 
   const titleData = classData?.system.titles;
-  const title = getTitle(level.value, alignment, titleData);
-
-  let hpPercent = calculateHpPercent(attributes.hp.value, attributes.hp.max);
-
-  let luckValue;
-  if (pulpMode) {
-    luckValue = luck?.remaining;
+  let title = null;
+  if (titleData) {
+    title = getTitle(actor.system.level.value, actor.system.alignment, titleData);
   }
-  else {
-    luckValue = luck?.available ? "●" : "○"
+
+  let luckValue = null;
+  if (actor.system.luck) {
+    if (pulpMode) {
+      luckValue = actor.system.luck?.remaining;
+    }
+    else {
+      luckValue = actor.system.luck?.available ? "●" : "○";
+    }
   }
-  
+
   return {
-    id: c.id,
-    isPlayer: c.type == "Player",
-    isToken: false,
-    name: c.name,
-    level: level.value,
+    uuid: actor.uuid,
+    isPlayer: actor.type == "Player",
+    isToken: !entity.prototypeToken,
+    name: actor.name,
+    level: level,
     ancestry: ancestryData?.name,
     class: classData?.name,
     title: title,
-    armor: attributes.ac.value,
+    armor: ac,
     luck: luckValue,
-    picture: c.img,
-    hp: {
-      value: attributes.hp.value,
-      max: attributes.hp.max,
-      percent: hpPercent,
-      status: hpStatus(hpPercent),
-    },
-  };
-}
-
-export async function tokenData(t) {
-  const actor = game.actors.get(t.actorId);
-  if (!actor) return;
-  
-  const actorSystem = actor.system;
-  const tokenSystem = t.delta.system;
-
-  const actorData = {
-    name: actor.name,
-    id: actor.id,
-    level: actorSystem.level.value,
-    armor: actorSystem.attributes.ac.value,
     picture: actor.img,
-  }
-
-  const tokenData = {
-    name: t.delta.name,
-    id: t.delta.id,
-    level: tokenSystem.level?.value,
-    armor: tokenSystem.attributes?.ac?.value,
-    picture: t.delta.img,
-  }
-
-  const hp = tokenSystem.attributes?.hp.value ?? actorSystem.attributes?.hp.value;
-  const hpMax = tokenSystem.attributes?.hp.max ?? actorSystem.attributes?.hp.max;
-  const hpPercent = calculateHpPercent(hp, hpMax);
-
-  // Combine actor and token data. This way we can
-  // show what is actually set in the sheet.
-  return {
-    id: tokenData.id ?? actorData.id,
-    isPlayer: false,
-    isToken: true,
-    name: tokenData.name ?? actorData.name,
-    level: tokenData.level ?? actorData.level,
-    armor: tokenData.armor ?? actorData.armor,
-    picture: tokenData.picture ?? actorData.picture,
     hp: {
       value: hp,
       max: hpMax,

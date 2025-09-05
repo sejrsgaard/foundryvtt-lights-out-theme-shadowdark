@@ -1,8 +1,7 @@
 import {
   getCharacter,
   getPartyCharacters,
-  characterData,
-  tokenData
+  getEntityData
 } from "./character.js";
 import * as actions from "./actions.js";
 import { setupHealthPointsTracker } from "./helpers.js";
@@ -12,12 +11,6 @@ import { PartyPanelApp } from "./apps/PartyPanelApp.js";
 
 Hooks.once("init", async () => {
     registerSettings();
-    $("section#ui-left").append('<div id="party"></div>');
-  
-    await loadTemplates([
-      "modules/lights-out-theme-shadowdark/templates/character.hbs",
-      "modules/lights-out-theme-shadowdark/templates/party.hbs",
-    ]);
 });
 
 Hooks.once("ready", async () => {
@@ -34,11 +27,9 @@ Hooks.once("ready", async () => {
     game.lightsOutTheme.partyPanel = new PartyPanelApp();
     game.lightsOutTheme.partyPanel.render(true);
 
-    //initial render of ui components
+    // Initial data for UI components
     await renderCharacter();
     await renderParty();
-
-    //activatePartyListeners();
 
     console.log("Lights Out Theme | Ready");
 });
@@ -105,7 +96,7 @@ Hooks.on("rtcSettingsChanged", async (settings, changes) => {
 });
 
 Hooks.on("updateActor", async function (actor) {
-  if (game.user.isGM || actor.id === getCharacter()?.id) {
+  if (game.user.isGM || actor.uuid === getCharacter()?.uuid) {
     await renderCharacter();
   }
   
@@ -134,14 +125,7 @@ async function renderCharacter(selection = false) {
     return;
   }
 
-  let data;
-  if (character.prototypeToken) {
-    data = await characterData(character);
-  }
-  else {
-    data = await tokenData(character);
-  }
-
+  let data = await getEntityData(character);
   if (!data) return;
 
   const settings = {
@@ -162,7 +146,7 @@ async function renderParty() {
     return;
   }
   
-  const characters = await Promise.all(getPartyCharacters().map(characterData));
+  const characters = await Promise.all(getPartyCharacters().map(getEntityData));
   game.lightsOutTheme.partyPanel.updateData(characters);
 }
 

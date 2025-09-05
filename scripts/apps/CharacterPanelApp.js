@@ -54,7 +54,7 @@ export class CharacterPanelApp extends HandlebarsApplicationMixin(ApplicationV2)
 
     _prepareContext(options) {
         return {
-            id: this.characterData.id,
+            uuid: this.characterData.uuid,
             isPlayer: this.characterData.isPlayer,
             isToken: this.characterData.isToken,
             name: this.characterData.name,

@@ -32,7 +32,7 @@ export function setupHealthPointsTracker(element) {
         this.value = this.dataset.value;
     });
 
-    element.addEventListener("keyup", function (e) {
+    element.addEventListener("keyup", async function (e) {
         if (e.keyCode !== 13) {
             return;
         }
@@ -40,13 +40,7 @@ export function setupHealthPointsTracker(element) {
         e.preventDefault();
         e.stopPropagation();
 
-        let actor;
-        if (this.dataset.token === "true") {
-            let scene = game.canvas.scene;
-            actor = scene.tokens.find(item => item.delta.id === this.dataset.id).actor;
-        } else {
-            actor = game.actors.get(this.dataset.id);
-        }
+        let actor = await fromUuid(this.dataset.uuid);
 
         if (!actor) {
             return;
