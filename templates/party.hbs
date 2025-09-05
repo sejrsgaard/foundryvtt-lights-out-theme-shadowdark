@@ -1,7 +1,7 @@
 <div class="party-characters">
     {{#each characters as |c|}}
     <div class="party-character">
-        <div class="character-picture" data-id="{{c.id}}">
+        <div class="character-picture" data-uuid="{{c.uuid}}">
             <img src="{{c.picture}}" alt="{{c.name}}" />
         </div>
 
@@ -13,9 +13,9 @@
                 </div>
                 <div class="character-health">
                     <div class="bar-wrapper">
-                        {{#if (or (not ../hidePartyHealth) (eq c.id ../userCharacterId))}}
+                        {{#if (or (not ../hidePartyHealth) (eq c.uuid ../userCharacterUuid))}}
                         <div class="bar {{hp.status}}" style="width: {{hp.percent}}%"></div>
-                        <input type="text" class="current-health" data-value="{{hp.value}}" data-id="{{c.id}}"
+                        <input type="text" class="current-health" data-value="{{hp.value}}" data-uuid="{{c.uuid}}"
                             value="{{hp.value}}" />
                         <span class="divider">/</span>
                         <input type="text" value="{{hp.max}}" disabled />

@@ -1,21 +1,12 @@
-export function openSheet() {
-  let actor;
-
-  if (this.dataset.token === "true") {
-    let scene = game.canvas.scene;
-    actor = scene.tokens.find(item => item.delta.id === this.dataset.id).actor;
-  }
-  else {
-    actor = game.actors.get(this.dataset.id);
-  }
-
+export async function openSheet() {
+  const actor = await fromUuid(this.dataset.uuid);
   if (actor) {
     actor.sheet.render(true);
   }
 }
 
-export function selectToken() {
-  const actor = game.actors.get(this.dataset.id);
+export async function selectToken() {
+  const actor = await fromUuid(this.dataset.uuid);
   if (!actor) return;
 
   const tokens = actor.getActiveTokens();
@@ -24,16 +15,15 @@ export function selectToken() {
   }
 }
 
-export function changeLuck() {
-  let actor = game.actors.get(this.dataset.id);
-
+export async function changeLuck() {
+  const actor = await fromUuid(this.dataset.uuid);
   if (actor) {
     actor.update({ "system.luck.available": !actor.system.luck.available });
   }
 }
 
-export function changePulpLuck(_, change) {
-  let actor = game.actors.get(this.dataset.id);
+export async function changePulpLuck(_, change) {
+  const actor = await fromUuid(this.dataset.uuid);
 
   if (actor) {
     let luckValue = parseInt(actor.system.luck.remaining + change);
