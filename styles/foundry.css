@@ -1,4 +1,13 @@
-@layer lights-out.chat, lights-out-sidebar, lights-out-components, lights-out-applications;
+@layer lights-out.interface, lights-out.chat, lights-out-sidebar, lights-out-components, lights-out-applications;
+
+/**
+ * Interface
+ */
+@layer lights-out.interface {
+  #ui-left-column-1 {
+    justify-content: normal;
+  }
+}
 
 /**
  * Chat
@@ -226,6 +235,13 @@
   }
 
   /**
+  * Scene Controls
+  */
+  #scene-controls {
+    flex: none;
+  }
+
+  /**
   * Hotbar
   */
   #hotbar #action-bar {
@@ -260,6 +276,10 @@
   /**
   * Player list
   */
+  #players {
+    margin-top: auto;
+  }
+
   #players #players-active {
     border-radius: var(--lights-out-border-radius-small);
   }

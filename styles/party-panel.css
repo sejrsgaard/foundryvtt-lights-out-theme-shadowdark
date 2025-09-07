@@ -3,18 +3,18 @@
  */
 
 #party {
-  position: absolute;
-  top: 50%;
-  left: 0.25rem;
   color: var(--lights-out-color-foreground-primary);
   font-family: "QTFrizQuad";
   pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 4rem;
 }
 
 #party .party-characters {
   display: flex;
   flex-direction: column;
-  transform: translateY(-50%);
 }
 
 #party .party-character {
@@ -33,9 +33,10 @@
   box-shadow: var(--lights-out-shadow-primary);
   border-radius: 50%;
   position: relative;
-  margin: 0.5em;
+  margin: 0.5em 0.5em 0.5em 0;
   z-index: 10;
   padding: 2px;
+  flex-shrink: 0;
 }
 
 #party .character-picture img {
@@ -51,7 +52,7 @@
   font-size: 0.9em;
   font-weight: bold;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 3px black, 0 0 5px black, 0 0 7px black, 0 0 15px black;
+  text-shadow: var(--lights-out-shadow-text);
 }
 
 #party .character-health {

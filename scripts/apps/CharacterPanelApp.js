@@ -74,10 +74,11 @@ export class CharacterPanelApp extends HandlebarsApplicationMixin(ApplicationV2)
     _insertElement(element) {
         const existing = document.getElementById(element.id);
         
-        const container = document.querySelector("#ui-bottom");
-        
+        const targetContainerId = "#ui-bottom";
+        const container = document.querySelector(`${targetContainerId}`);
+
         if (!container) {
-            console.warn("Target container #ui-bottom not found");
+            console.warn(`Target container ${targetContainerId} not found. Character panel cannot be rendered.`);
             return;
         }
         
