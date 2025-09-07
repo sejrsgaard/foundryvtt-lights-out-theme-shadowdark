@@ -117,7 +117,7 @@
 
 #player-character .character-details {
   position: absolute;
-  top: -4px;
+  top: -0.75rem;
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
