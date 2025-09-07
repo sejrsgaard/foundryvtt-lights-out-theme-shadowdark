@@ -1,4 +1,10 @@
 <div class="character-info">
+    <div class="character-details">
+        <div class="character-name">
+            {{name}}
+        </div>
+    </div>
+
     <div class="character-info-top">
         <form class="character-attrs">
             <div class="bar-wrapper">
@@ -33,24 +39,12 @@
             <div class="bar-wrapper">
                 <div class="bar {{hp.status}}" style="width: {{hp.percent}}%"></div>
 
-                <input type="text" id="current-health" data-value="{{hp.value}}" data-uuid="{{uuid}}" data-token={{isToken}}
-                    value="{{hp.value}}" />
+                <input type="text" id="current-health" data-value="{{hp.value}}" data-uuid="{{uuid}}"
+                    data-token={{isToken}} value="{{hp.value}}" />
                 <span class="divider">/</span>
                 <input type="text" value="{{hp.max}}" disabled />
             </div>
         </div>
 
-    </div>
-
-    <div class="character-details">
-        <div class="character-name">
-            {{name}}
-        </div>
-
-        {{#unless settings.hide_title}}
-        <div class="character-race-class">
-            {{title}} {{class}}
-        </div>
-        {{/unless}}
     </div>
 </div>

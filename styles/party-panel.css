@@ -1,0 +1,120 @@
+/**
+ * Party
+ */
+
+#party {
+  color: var(--lights-out-color-foreground-primary);
+  font-family: "QTFrizQuad";
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 4rem;
+}
+
+#party .party-characters {
+  display: flex;
+  flex-direction: column;
+}
+
+#party .party-character {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-body);
+}
+
+#party .character-picture {
+  width: 50px;
+  height: 50px;
+  background: url(../images/backgrounds/noise-bg.webp);
+  background-repeat: repeat;
+  border: 1px solid var(--lights-out-color-background-primary);
+  box-shadow: var(--lights-out-shadow-primary);
+  border-radius: 50%;
+  position: relative;
+  margin: 0.5em 0.5em 0.5em 0;
+  z-index: 10;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+#party .character-picture img {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--lights-out-color-background-secondary);
+  cursor: pointer;
+}
+
+#party .character-name {
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-shadow: var(--lights-out-shadow-text);
+}
+
+#party .character-health {
+  width: 150px;
+  height: 25px;
+  background: url(../images/backgrounds/noise-bg.webp);
+  background-repeat: repeat;
+  border-radius: 5px;
+  border: 1px solid var(--lights-out-color-background-primary);
+  box-shadow: var(--lights-out-shadow-large);
+  margin-left: -29px;
+  padding: 2px;
+}
+
+#party .bar-wrapper {
+  width: 100%;
+  height: 100%;
+  background: var(--lights-out-color-background-primary);
+  border-radius: 5px;
+  border: 1px solid var(--lights-out-color-background-primary);
+  box-shadow: var(--lights-out-shadow-large);
+  position: relative;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+#party .character-health .bar {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+  width: 75%;
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: var(--lights-out-shadow-bar-glow);
+}
+
+#party .character-health input {
+  color: white;
+  width: auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-shadow: var(--lights-out-shadow-text);
+  width: 60px;
+  text-align: center;
+  font-size: 1.1em;
+  margin-top: 2px;
+  z-index: 3;
+  background: transparent;
+}
+
+#party .character-health .divider {
+  flex: 1;
+  text-align: center;
+  padding-top: 2px;
+  z-index: 3;
+  text-shadow: var(--lights-out-shadow-text);
+}
+
+#party,
+#player-character {
+  z-index: 98;
+}

@@ -1,0 +1,13 @@
+@import url("variables.css");
+@import url("animations.css");
+
+@import url("party-panel.css");
+@import url("character-panel.css");
+
+@import url("foundry.css");
+
+body {
+  --font-body: "Montserrat-Medium", sans-serif;
+
+  --font-h1: "Old Newspaper Font", sans-serif;
+}

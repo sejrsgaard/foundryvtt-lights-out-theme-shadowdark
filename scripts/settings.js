@@ -80,6 +80,7 @@ export function registerSettings() {
         default: false
     });
 
+    /*
     game.settings.register("lights-out-theme-shadowdark", "hide-pc-title", {
         name: game.i18n.localize("LIGHTSOUTSD.config_hide_pc_title"),
         hint: game.i18n.localize("LIGHTSOUTSD.config_hide_pc_title_help"),
@@ -87,8 +88,9 @@ export function registerSettings() {
         config: true,
         requiresReload: true,
         type: Boolean,
-        default: false
+        default: false  
     });
+    */
 
     game.settings.register("lights-out-theme-shadowdark", "disable-gm-selected-token", {
         name: game.i18n.localize("LIGHTSOUTSD.config_disable_gm_selected_token"),

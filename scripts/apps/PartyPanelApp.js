@@ -47,23 +47,25 @@ export class PartyPanelApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
     _insertElement(element) {
         const existing = document.getElementById(element.id);
-        
-        const container = document.querySelector("#ui-middle");
-        
-        if (!container) {
-            console.warn("Target container #ui-middle not found");
+
+        const anchorElementId = "#scene-controls";
+        const anchor = document.querySelector(`${anchorElementId}`);
+        if (!anchor) {
+            // TODO: Handle this more gracefully, e.g. if the user
+            // has hidden the scene controls using a module.
+            console.warn(`Anchor element ${anchorElementId} not found. Party panel cannot be rendered.`);
             return;
         }
         
         if (existing) {
-            if (existing.parentElement !== container) {
+            if (existing.parentElement !== anchor) {
                 existing.remove();
-                container.appendChild(element);
+                anchor.insertAdjacentElement("afterend", element);
             } else {
                 existing.replaceWith(element);
             }
         } else {
-            container.appendChild(element);
+            anchor.insertAdjacentElement("afterend", element);
         }
     }
 

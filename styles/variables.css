@@ -1,0 +1,121 @@
+:root {
+  --color-primary: #eaeaea;
+  --color-primary-medium: #d3d3d3;
+  --color-primary-dark: #a8a8a8;
+  --color-primary-gradient: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
+
+  --color-bar-border: linear-gradient(180deg, #e8e8e8, #cdcdcd);
+  --shadow-text: rgba(0, 0, 0, 0.9);
+  --color-chat-msg-bg: #111111;
+  --color-chat-msg-text: #dddddd;
+
+  --filter-grayscale: grayscale(100%) contrast(1.75);
+
+  /**
+    * Overriding Shadowdark system variable styles
+    */
+  --color-shadow-primary: var(--color-primary-dark);
+  --color-shadow-highlight: var(--color-primary-medium);
+  --color-border-highlight: var(--color-primary-medium);
+  --color-border-highlight-alt: var(--color-primary-medium);
+
+  --lights-out-border-radius-small: 2px;
+  --lights-out-border-radius-large: 100%;
+}
+
+/**
+* Themed variables
+* These variables will change based on the theme selected in the Foundry settings
+*/
+.themed.theme-light {
+  --lights-out-color-background-primary: rgba(0, 0, 0, 1);
+  --lights-out-color-background-secondary: rgba(0, 0, 0, 0.5);
+  --lights-out-color-foreground-primary: white;
+  --lights-out-color-foreground-secondary: #a8a8a8;
+
+  --lights-out-color-text-primary: #dddddd;
+
+  --lights-out-color-chat-message-background: #111111;
+  --lights-out-color-chat-message-background-secondary: #1a1a1a;
+  --lights-out-color-chat-message-text: var(--lights-out-color-text-primary);
+  --lights-out-color-chat-message-border: rgba(255, 255, 255, 0.1);
+
+  --lights-out-color-roll-fail: #cb0100;
+  --lights-out-color-roll-success: #007e2a;
+
+  --lights-out-color-bar-unknown: linear-gradient(180deg, #323232, #292929);
+  --lights-out-color-bar-healthy: linear-gradient(180deg, #ba2524, #861211);
+  --lights-out-color-bar-hurt: linear-gradient(180deg, #ba2524, #861211);
+  --lights-out-color-bar-injured: linear-gradient(180deg, #971e1d, #660e0d);
+  --lights-out-color-bar-critical: linear-gradient(180deg, #6a1413, #410808);
+
+  --lights-out-shadow-text: 0 0 5px rgba(0, 0, 0, 1);
+  --lights-out-shadow-medium: 0 0 10px rgba(0, 0, 0, 1);
+  --lights-out-shadow-large: 0 0 20px rgba(0, 0, 0, 0.6);
+  --lights-out-shadow-primary: 0 0 15px rgba(0, 0, 0, 0.6),
+    1 0 0 rgba(255, 255, 255, 0.4) inset;
+  --lights-out-shadow-bar-glow: 0px 1px 0 1px rgba(255, 255, 255, 0.4) inset;
+
+  --color-text-primary: var(--lights-out-color-foreground-primary);
+  --color-text-secondary: var(--lights-out-color-foreground-secondary);
+}
+
+.themed.theme-dark {
+  --lights-out-color-background-primary: rgba(0, 0, 0, 1);
+  --lights-out-color-background-secondary: rgba(0, 0, 0, 0.5);
+  --lights-out-color-foreground-primary: white;
+  --lights-out-color-foreground-secondary: #a8a8a8;
+
+  --lights-out-color-text-primary: #dddddd;
+
+  --lights-out-color-chat-message-background: #111111;
+  --lights-out-color-chat-message-background-secondary: #1a1a1a;
+  --lights-out-color-chat-message-text: var(--lights-out-color-text-primary);
+  --lights-out-color-chat-message-border: rgba(255, 255, 255, 0.1);
+
+  --lights-out-color-roll-fail: #cb0100;
+  --lights-out-color-roll-success: #007e2a;
+
+  --lights-out-color-bar-unknown: linear-gradient(180deg, #323232, #292929);
+  --lights-out-color-bar-healthy: linear-gradient(180deg, #ba2524, #861211);
+  --lights-out-color-bar-hurt: linear-gradient(180deg, #ba2524, #861211);
+  --lights-out-color-bar-injured: linear-gradient(180deg, #971e1d, #660e0d);
+  --lights-out-color-bar-critical: linear-gradient(180deg, #6a1413, #410808);
+
+  --lights-out-shadow-text: 0 0 5px rgba(0, 0, 0, 1);
+  --lights-out-shadow-medium: 0 0 10px rgba(0, 0, 0, 1);
+  --lights-out-shadow-large: 0 0 20px rgba(0, 0, 0, 0.6);
+  --lights-out-shadow-primary: 0 0 15px rgba(0, 0, 0, 0.6),
+    1 0 0 rgba(255, 255, 255, 0.4) inset;
+  --lights-out-shadow-bar-glow: 0px 1px 0 1px rgba(255, 255, 255, 0.4) inset;
+
+  --color-text-primary: var(--lights-out-color-foreground-primary);
+  --color-text-secondary: var(--lights-out-color-foreground-secondary);
+}
+
+.themed.theme-light .ui-control,
+.themed.theme-dark .ui-control {
+  --control-active-border-color: var(--lights-out-color-foreground-primary);
+  --control-active-bg-color: var(--lights-out-color-background-primary);
+  --control-active-icon-color: var(--lights-out-color-foreground-primary);
+}
+
+.themed.theme-light button,
+.themed.theme-dark button {
+  --button-text-color: var(--lights-out-color-foreground-primary);
+}
+
+.themed.theme-light input,
+.themed.theme-dark input,
+.themed.theme-light select,
+.themed.theme-dark select,
+.themed.theme-light textarea,
+.themed.theme-dark textarea {
+  --input-text-color: var(--lights-out-color-foreground-primary);
+  --input-focus-outline-color: var(--lights-out-color-foreground-secondary);
+  --input-placeholder-color: var(--lights-out-color-foreground-secondary);
+}

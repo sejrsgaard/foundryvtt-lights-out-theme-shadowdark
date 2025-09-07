@@ -43,24 +43,14 @@ Hooks.on("renderSettings", function (app, html) {
 // Hide UI elements if current player permissions are below the global setting
 Hooks.on("renderHotbar", async (app, html) => {
     const hotBarSetting = game.settings.get("lights-out-theme-shadowdark", "hotbar_visibility");
-    (hotBarSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
-});
-
-Hooks.on("renderPlayerList", async (app, html) => {
-    let playerListSetting = game.settings.get("lights-out-theme-shadowdark", "players_list_visibility");
-    (playerListSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
+    const hide = hotBarSetting < userPermission();
+    app.element.classList.toggle("hidden", hide);
 });
 
 Hooks.on("renderSceneNavigation", async (app, html) => {
     let navBarSetting = game.settings.get("lights-out-theme-shadowdark", "navbar_visibility");
-    (navBarSetting < userPermission()) ? app.element.addClass("hidden") : app.element.removeClass("hidden");
-
-    // Adjust #navigation top position based on hotbar visibility
-    const hotBarSetting = game.settings.get("lights-out-theme-shadowdark", "hotbar_visibility");
-    const navigationElement = document.getElementById("navigation");
-    if (navigationElement) {
-        navigationElement.classList.toggle("with-hotbar", hotBarSetting);
-    }
+    const hide = navBarSetting < userPermission();
+    app.element.classList.toggle("hidden", hide);
 });
 
 Hooks.on("renderSceneControls", (controls, html) => {
@@ -85,6 +75,17 @@ Hooks.on("renderSceneControls", (controls, html) => {
         $("section.effect-panel").removeClass("collapsed");
     }
 });
+
+// Since Foundry V13, the Player List is no longer rendered through the old PlayerList Application 
+// that emitted the renderPlayerList hook. Instead, we need to directly manipulate the DOM element.
+function applyPlayerListVisibility() {
+    const playerListSetting = game.settings.get("lights-out-theme-shadowdark", "players_list_visibility");
+    const hide = playerListSetting < userPermission();
+    const el = ui.players?.element || document.querySelector("#players");
+    if (el) el.classList.toggle("hidden", hide);
+}
+Hooks.on("ready", applyPlayerListVisibility);
+Hooks.on("updateUser", applyPlayerListVisibility);
 
 Hooks.on("collapseSidebar", (sidebar, collapsed) => {
     ui.controls.render();
@@ -132,10 +133,12 @@ async function renderCharacter(selection = false) {
   let data = await getEntityData(character);
   if (!data) return;
 
+  /*
   const settings = {
     hide_title: game.settings.get("lights-out-theme-shadowdark", "hide-pc-title"),
   }
   data.settings = settings;
+  */
 
   // Mark if the render was triggered by a selection
   data.selected = selection;
