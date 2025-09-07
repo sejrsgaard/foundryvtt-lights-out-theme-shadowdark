@@ -47,12 +47,6 @@ Hooks.on("renderHotbar", async (app, html) => {
     app.element.classList.toggle("hidden", hide);
 });
 
-Hooks.on("renderPlayerList", async (app, html) => {
-    let playerListSetting = game.settings.get("lights-out-theme-shadowdark", "players_list_visibility");
-    const hide = playerListSetting < userPermission();
-    app.element.classList.toggle("hidden", hide);
-});
-
 Hooks.on("renderSceneNavigation", async (app, html) => {
     let navBarSetting = game.settings.get("lights-out-theme-shadowdark", "navbar_visibility");
     const hide = navBarSetting < userPermission();
@@ -81,6 +75,17 @@ Hooks.on("renderSceneControls", (controls, html) => {
         $("section.effect-panel").removeClass("collapsed");
     }
 });
+
+// Since Foundry V13, the Player List is no longer rendered through the old PlayerList Application 
+// that emitted the renderPlayerList hook. Instead, we need to directly manipulate the DOM element.
+function applyPlayerListVisibility() {
+    const playerListSetting = game.settings.get("lights-out-theme-shadowdark", "players_list_visibility");
+    const hide = playerListSetting < userPermission();
+    const el = ui.players?.element || document.querySelector("#players");
+    if (el) el.classList.toggle("hidden", hide);
+}
+Hooks.on("ready", applyPlayerListVisibility);
+Hooks.on("updateUser", applyPlayerListVisibility);
 
 Hooks.on("collapseSidebar", (sidebar, collapsed) => {
     ui.controls.render();
