@@ -2,7 +2,7 @@
 name: Bug report
 about: Report a bug you have found
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---
@@ -16,6 +16,9 @@ Steps to reproduce the behavior:
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
+
+**Which Foundry version are you running?**
+Older than V12 / V12 / V13
 
 **Do you have other modules installed?**
 Yes / No
