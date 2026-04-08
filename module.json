@@ -2,11 +2,10 @@
     "id": "lights-out-theme-shadowdark",
     "title": "Shadowdark Lights Out Theme",
     "description": "A darker and polished UI theme for Shadowdark with party and character panels.",
-    "version": "2.0-beta-1",
+    "version": "2.0-beta2",
     "authors": [
         {
-            "name": "Nash",
-            "discord": "ronijii",
+            "name": "Kenneth",
             "url": "https://github.com/sejrsgaard",
             "flags": {}
         }
@@ -66,8 +65,8 @@
     ],
     "compatibility": {
         "minimum": "13",
-        "verified": "13.348",
-        "maximum": "13"
+        "verified": "14.359",
+        "maximum": "14"
     },
     "relationships": {
         "systems": [
