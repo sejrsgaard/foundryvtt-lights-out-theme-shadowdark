@@ -22,10 +22,10 @@ Hooks.once("ready", async () => {
     // Create and render apps
     game.lightsOutTheme = game.lightsOutTheme || {};
     game.lightsOutTheme.characterPanel = new CharacterPanelApp();
-    game.lightsOutTheme.characterPanel.render(true);
+    game.lightsOutTheme.characterPanel.render();
 
     game.lightsOutTheme.partyPanel = new PartyPanelApp();
-    game.lightsOutTheme.partyPanel.render(true);
+    game.lightsOutTheme.partyPanel.render();
 
     // Initial data for UI components
     await renderCharacter();
@@ -35,9 +35,12 @@ Hooks.once("ready", async () => {
 });
 
 Hooks.on("renderSettings", function (app, html) {
-  $('<div class="lights-out-block"></div>').insertAfter(
-    $(html).find('section[data-tab="modules"]')
-  );
+    const modulesSection = html.querySelector('section[data-tab="modules"]');
+    if (modulesSection) {
+        const block = document.createElement('div');
+        block.className = 'lights-out-block';
+        modulesSection.insertAdjacentElement('afterend', block);
+    }
 });
 
 // Hide UI elements if current player permissions are below the global setting
@@ -54,26 +57,28 @@ Hooks.on("renderSceneNavigation", async (app, html) => {
 });
 
 Hooks.on("renderSceneControls", (controls, html) => {
-    //create a control tools button and add a click handler to collapse the side bar
-    let icon = (ui.sidebar._collapsed) ? "fa-caret-left" : "fa-caret-right";
-    $("#controls ol.control-tools.main-controls").append(`
-        <li class="scene-control sidebar-control" data-tooltip="${game.i18n.localize("LIGHTSOUTSD.sidebar_tooltip")}">
-            <i class="fas ${icon}"></i>
-        </li>`
-    );
-    $(".scene-control.sidebar-control").click(async function() {ui.sidebar._collapsed ? ui.sidebar.expand() : ui.sidebar.collapse();})
+    const collapsed = ui.sidebar.collapsed;
+    const icon = collapsed ? "fa-caret-left" : "fa-caret-right";
 
-    $("#controls").css('right', uiEdges().right);
+    const mainControls = document.querySelector("#controls ol.control-tools.main-controls");
+    if (mainControls) {
+        const li = document.createElement('li');
+        li.className = 'scene-control sidebar-control';
+        li.dataset.tooltip = game.i18n.localize("LIGHTSOUTSD.sidebar_tooltip");
+        li.innerHTML = `<i class="fas ${icon}"></i>`;
+        li.addEventListener('click', () => {
+            ui.sidebar.collapsed ? ui.sidebar.expand() : ui.sidebar.collapse();
+        });
+        mainControls.append(li);
+    }
 
-    //move controls and effects panel to match the sidebar's collapsed state
-    if (ui.sidebar._collapsed) {
-        $("#controls").addClass("collapsed");
-        $("section.effect-panel").addClass("collapsed");
+    const controlsEl = document.querySelector("#controls");
+    if (controlsEl) {
+        controlsEl.style.right = `${uiEdges().right}px`;
+        controlsEl.classList.toggle("collapsed", collapsed);
     }
-    else {
-        $("#controls").removeClass("collapsed");
-        $("section.effect-panel").removeClass("collapsed");
-    }
+
+    document.querySelector("section.effect-panel")?.classList.toggle("collapsed", collapsed);
 });
 
 // Since Foundry V13, the Player List is no longer rendered through the old PlayerList Application 

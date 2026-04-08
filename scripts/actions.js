@@ -1,7 +1,7 @@
 export async function openSheet() {
   const actor = await fromUuid(this.dataset.uuid);
   if (actor) {
-    actor.sheet.render(true);
+    actor.sheet.render({force: true});
   }
 }
 
