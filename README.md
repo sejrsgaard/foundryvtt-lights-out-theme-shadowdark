@@ -1,10 +1,10 @@
 <h1 align="center">Lights Out - Shadowdark theme for FoundryVTT</h1>
 <p align="center"><sup><i>Let There Be Darkness...</i></sup></p>
 <p align="center">
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fronijaakkola%2Ffoundryvtt-lights-out-theme-shadowdark%2Fmain%2Fmodule.json&query=%24.compatibility.verified&logo=foundryvirtualtabletop&logoColor=white&label=Foundry%20version&labelColor=%23FE6A1F&color=black" />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsejrsgaard%2Ffoundryvtt-lights-out-theme-shadowdark%2Fmain%2Fmodule.json&query=%24.compatibility.verified&logo=foundryvirtualtabletop&logoColor=white&label=Foundry%20version&labelColor=%23FE6A1F&color=black" />
   <a href="https://foundryvtt.com/packages/shadowdark"><img src="https://img.shields.io/badge/system-shadowdark-black?labelColor=white" /></a>
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fronijaakkola%2Ffoundryvtt-lights-out-theme-shadowdark%2Fmain%2Fmodule.json&query=%24.version&logoColor=white&label=version&labelColor=white&color=black" />
-  <img src="https://img.shields.io/github/downloads/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/module.zip?style=flat&labelColor=white&color=black" />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsejrsgaard%2Ffoundryvtt-lights-out-theme-shadowdark%2Fmain%2Fmodule.json&query=%24.version&logoColor=white&label=version&labelColor=white&color=black" />
+  <img src="https://img.shields.io/github/downloads/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/module.zip?style=flat&labelColor=white&color=black" />
   <a href="https://crowdin.com/project/shadowdark-lights-out-theme"><img src="https://badges.crowdin.net/shadowdark-lights-out-theme/localized.svg" /></a>
 </p>
 

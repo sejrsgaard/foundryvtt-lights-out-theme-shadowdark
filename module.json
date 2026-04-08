@@ -7,7 +7,7 @@
         {
             "name": "Nash",
             "discord": "ronijii",
-            "url": "https://github.com/ronijaakkola",
+            "url": "https://github.com/sejrsgaard",
             "flags": {}
         }
     ],
@@ -82,10 +82,10 @@
             }
         ]
     },
-    "bugs": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/issues",
-    "changelog": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/releases",
-    "download": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/releases/download/v1.16/module.zip",
-    "manifest": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/releases/latest/download/module.json",
-    "readme": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark/blob/main/README.md",
-    "url": "https://github.com/ronijaakkola/foundryvtt-lights-out-theme-shadowdark"
+    "bugs": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/issues",
+    "changelog": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/releases",
+    "download": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/releases/download/v1.16/module.zip",
+    "manifest": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/releases/latest/download/module.json",
+    "readme": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark/blob/main/README.md",
+    "url": "https://github.com/sejrsgaard/foundryvtt-lights-out-theme-shadowdark"
 }   
